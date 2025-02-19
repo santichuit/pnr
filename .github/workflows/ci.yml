@@ -31,6 +31,6 @@ jobs:
         working-directory: payoneer
 
       - name: Run unit tests
-        run: ng test
+        run: ng test --watch=false --code-coverage
         working-directory: payoneer
 

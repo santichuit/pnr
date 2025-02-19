@@ -20,4 +20,4 @@ jobs:
         with:
           context: ./payoneer
           push: true
-          tags: santichuit/pnr/your-image-name:${{ github.ref_name }}
+          tags: santichuit/pnr:${{ github.ref_name }}

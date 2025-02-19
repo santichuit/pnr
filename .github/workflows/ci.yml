@@ -6,7 +6,7 @@ on:
       - feature123  # While pushing to this branch
 
 jobs:
-  deploy:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -31,6 +31,6 @@ jobs:
         working-directory: payoneer
 
       - name: Run unit tests
-        run: ng test
+        run: ng test --watch=false --code-coverage
         working-directory: payoneer
 

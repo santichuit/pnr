@@ -1,0 +1,41 @@
+- name: Install Docker CE on CentOS 7
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: Run "yum update"
+      yum:
+        name: '*'
+        state: latest
+    - name: Install pre-req packages ( from docker wiki )
+      yum:
+        name:
+          - container-selinux
+          - yum-utils
+          - device-mapper-persistent-data
+          - lvm2
+        state: present
+    - name: Add Docker CE repository ( from docker wiki )
+      get_url:
+        url: https://download.docker.com/linux/centos/docker-ce.repo
+        dest: /etc/yum.repos.d/docker-ce.repo
+
+    - name: Install Docker ( from docker wiki )
+      yum:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+        state: present
+
+    - name: Start and enable Docker service - for now and after reboots
+      systemd:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Add centos to the dockcer group so it can run docker commands
+      user:
+        name: "centos"
+        groups: docker
+        append: yes
+

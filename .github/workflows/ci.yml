@@ -31,6 +31,6 @@ jobs:
         working-directory: payoneer
 
       - name: Run unit tests
-        run: ng test --watch=false --browsers=ChromeHeadlessCI
+        run: ng test
         working-directory: payoneer
 

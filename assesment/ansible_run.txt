@@ -1,0 +1,31 @@
+[centos@ip-172-31-25-9 ~]$ ansible-playbook -e ansible_python_interpreter=/usr/bin/python2 install_docker.yml
+
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+PLAY [Install Docker CE on CentOS 7] **********************************************************************************
+
+TASK [Gathering Facts] ************************************************************************************************
+ok: [localhost]
+
+TASK [Update all packages] ********************************************************************************************
+ok: [localhost]
+
+TASK [Install required packages] **************************************************************************************
+ok: [localhost]
+
+TASK [Add Docker CE repository] ***************************************************************************************
+ok: [localhost]
+
+TASK [Install Docker CE] **********************************************************************************************
+ok: [localhost]
+
+TASK [Start and enable Docker service] ********************************************************************************
+changed: [localhost]
+
+TASK [Add current user to docker group] *******************************************************************************
+changed: [localhost]
+
+PLAY RECAP ************************************************************************************************************
+localhost                  : ok=7    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+

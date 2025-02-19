@@ -1,0 +1,12 @@
+In order to install the below docker dependencies, I had to add the extra repo.
+( container-selinux, fuse-overlayfs ,slirp4netns )
+I've browsed base repo path on my broswer, found the rpms and got the "extras" repo path from there, so I've updated
+the main base repo file with the below + "sudo yum makecache"
+
+[extras]
+name=CentOS-$releasever - Extras
+baseurl=https://vault.centos.org/centos/7/extras/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+

@@ -37,9 +37,10 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
           script: |
             docker pull ${{ secrets.DOCKER_USERNAME }}/pnr:${{ github.ref_name }}
+            echo "$(date) - Pulled version ${{ github.ref_name }}" >> /tmp/deployment.log
             docker stop payoneer-container || true
             docker rm payoneer-container || true
             docker run -d --name payoneer-container -p 80:4200 ${{ secrets.DOCKER_USERNAME }}/pnr:${{ github.ref_name }}
-
+            echo "Deployment completed at $(date)" >> /tmp/deployment.log
 
 

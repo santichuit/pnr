@@ -30,3 +30,6 @@ jobs:
         run: ng build
         working-directory: payoneer
 
+      - name: Run unit tests
+        run: ng test --watch=false --browsers=ChromeHeadlessCI
+

@@ -27,3 +27,19 @@ jobs:
           context: ./payoneer
           push: true
           tags: santichuit/pnr:${{ github.ref_name }}
+
+
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          script: |
+            docker pull ${{ secrets.DOCKER_USERNAME }}/pnr:${{ github.ref_name }}
+            docker stop payoneer-container || true
+            docker rm payoneer-container || true
+            docker run -d --name payoneer-container -p 80:4200 ${{ secrets.DOCKER_USERNAME }}/pnr:${{ github.ref_name }}
+
+
+

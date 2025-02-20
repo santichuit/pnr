@@ -1,9 +1,9 @@
-name: Build for branch feature123 on push
+name: Build for branches starting with feature on push
 
 on:
   push:
     branches:
-      - feature123  # While pushing to this branch
+      - 'feature**'  # While pushing to this branch
 
 jobs:
   build-and-test:

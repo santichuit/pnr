@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { version } from '../../package.json';
+import pkg from '../../package.json';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +8,5 @@ import { version } from '../../package.json';
 })
 export class AppComponent {
   title = 'Payoneer';
-  appVersion: string = version;
+  appVersion: string = pkg.version;
 }
